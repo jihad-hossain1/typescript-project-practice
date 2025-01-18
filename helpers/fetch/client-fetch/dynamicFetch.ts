@@ -1,29 +1,41 @@
-import { isError } from "@/helpers/error-hanler/isError";
-
-type TApiResponse<T> = {
-    data: T | null;
-    status: number;
-    message: string;
-    isError: boolean;
-  };
+import { isError } from "@/helpers/error-handler/isError";
+import { TDynamicApiResponse } from "./type";
   
-  // Type Guard for object
+  /**
+   * Type Guard for object
+   * @param data 
+   * @returns 
+   */
   function isObject(data: unknown): data is Record<string, unknown> {
     return typeof data === "object" && data !== null && !Array.isArray(data);
   }
   
-  // Type Guard for array
+  /**
+   * Type Guard for array
+   * @param data 
+   * @returns 
+   */
   function isArray(data: unknown): data is unknown[] {
     return Array.isArray(data);
   }
   
-  // Type Guard for primitive types
+  /**
+   * Type Guard for primitive types
+   * @param data 
+   * @returns 
+   */
   function isPrimitive(data: unknown): data is string | number | boolean {
     return ["string", "number", "boolean"].includes(typeof data);
   }
   
-  // Universal fetchData with type guard handling
- export const dynamicFetchData = async <T>(url: string): Promise<TApiResponse<T>> => {
+  /**
+   * Universal fetchData with type guard handling
+   * 
+   * @param url as string of api endpoint
+   * @returns Promise<TDynamicApiResponse<T>> 
+   *  
+   * */
+ export const dynamicFetchData = async <T>(url: string): Promise<TDynamicApiResponse<T>> => {
     try {
       const res = await fetch(url, { cache: "no-store" });
   

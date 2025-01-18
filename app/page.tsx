@@ -1,5 +1,6 @@
-import DemoUser from '@/modules/clientFetch/demoUser'
-import Users from '@/modules/clientFetch/users'
+// import DemoUser from '@/modules/client/clientFetch/demoUser'
+// import Users from '@/modules/client/clientFetch/users'
+import DependUser from '@/modules/client/usingHook/dependUser'
 import React from 'react'
 
 const HomePage = () => {
@@ -7,7 +8,8 @@ const HomePage = () => {
     <div>
       <h4>HomePage users</h4>
       {/* <Users /> */}
-      <DemoUser />
+      {/* <DemoUser /> */}
+      <DependUser />
     </div>
   )
 }

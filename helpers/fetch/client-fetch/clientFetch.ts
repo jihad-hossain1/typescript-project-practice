@@ -1,4 +1,4 @@
-import { isError } from "@/helpers/error-hanler/isError";
+import { isError } from "@/helpers/error-handler/isError";
 import { TApiResponse } from "./type";
 
 export const fetchData = async<T> (url: string): Promise<TApiResponse<T>> =>{
